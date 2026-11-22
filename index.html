@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Same Day, Two Screens</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Same Day, Two Screens</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <h1 class="side-title">Same Day, Two Screens</h1>
+    <h1 class="side-title">Same Day, Two Screens</h1>
 
-  <div class="laptop">
-    <img class="laptop-photo" src="assets/laptop.png">
-    <div class="screen">
+    <div class="laptop">
+        <img class="laptop-photo" src="assets/laptop.png">
+        <div class="screen">
 
-      <div class="menubar">
-        <span>Same Day, Two Screens</span>
-      </div>
+            <div class="menubar">
+                <span>Same Day, Two Screens</span>
+            </div>
 
-      <div class="tabs">
-        <a href="index.html" id="callTab" class="tab active">Call</a>
-        <a href="walk.html" class="tab">Walk</a>
-        <a href="food.html" class="tab">Food</a>
-        <a href="lecture.html" class="tab">Lecture</a>
-        <a href="notifications.html" class="tab">Notifications</a>
-      </div>
+            <div class="tabs">
+                <a href="index.html" id="callTab" class="tab active">Call</a>
+                <a href="walk.html" class="tab">Walk</a>
+                <a href="food.html" class="tab">Food</a>
+                <a href="lecture.html" class="tab">Lecture</a>
+                <a href="notifications.html" class="tab">Notifications</a>
+            </div>
 
-      <div class="content call-content">
-        <video id="callVideo" src="assets/zoom.mp4"></video>
+            <div class="content call-content">
+                <video id="callVideo" src="assets/zoom.mp4"></video>
 
-        <div class="names">
-          <span>Irma</span>
-          <span>Jayden</span>
+                <div class="names">
+                    <span>Irma</span>
+                    <span>Jayden</span>
+                </div>
+
+                <button id="startButton" class="button">Start call</button>
+                <button id="exploreButton" class="button hidden">Explore their days</button>
+
+                <div id="blackScreen" class="black-screen hidden">Call ended</div>
+            </div>
+
         </div>
-
-        <button id="startButton" class="button">Start call</button>
-        <button id="exploreButton" class="button hidden">Explore their days</button>
-
-        <div id="blackScreen" class="black-screen hidden">Call ended</div>
-      </div>
-
     </div>
-  </div>
 
-  <p class="footer">Made by Sanjana, Jayden, Sarah & Irma at NYUAD.</p>
+    <p class="footer">Made by Sanjana, Jayden, Sarah & Irma at NYUAD.</p>
 
-  <script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
+
 </html>

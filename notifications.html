@@ -1,63 +1,66 @@
 <!-- Setup for Sanjana -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notifications</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <h1 class="side-title">Same Day, Two Screens</h1>
+    <h1 class="side-title">Same Day, Two Screens</h1>
 
-  <div class="laptop">
-    <img class="laptop-photo" src="assets/laptop.png">
-    <div class="screen">
+    <div class="laptop">
+        <img class="laptop-photo" src="assets/laptop.png">
+        <div class="screen">
 
-      <div class="menubar">
-        <span>Same Day, Two Screens</span>
-      </div>
+            <div class="menubar">
+                <span>Same Day, Two Screens</span>
+            </div>
 
-      <div class="tabs">
-        <a href="index.html" id="callTab" class="tab">Call</a>
-        <a href="walk.html" class="tab">Walk</a>
-        <a href="food.html" class="tab">Food</a>
-        <a href="lecture.html" class="tab">Lecture</a>
-        <a href="notifications.html" class="tab active">Notifications</a>
-      </div>
+            <div class="tabs">
+                <a href="index.html" id="callTab" class="tab">Call</a>
+                <a href="walk.html" class="tab">Walk</a>
+                <a href="food.html" class="tab">Food</a>
+                <a href="lecture.html" class="tab">Lecture</a>
+                <a href="notifications.html" class="tab active">Notifications</a>
+            </div>
 
-      <div class="content">
+            <div class="content">
 
-        <!-- starts with the filmed clip -->
-        <div id="clipBox" class="clip-box">
-          <video id="notificationVideo" src="assets/notifications.mp4"></video>
-          <button id="playButton" class="button">Play clip</button>
+                <!-- starts with the filmed clip -->
+                <div id="clipBox" class="clip-box">
+                    <video id="notificationVideo" src="assets/notifications.mp4"></video>
+                    <button id="playButton" class="button">Play clip</button>
+                </div>
+
+                <!-- choose a laptop screen to explore -->
+                <div id="chooser" class="chooser hidden">
+                    <button id="irmaButton" class="choice">Irma's laptop</button>
+                    <button id="jaydenButton" class="choice">Jayden's laptop</button>
+                </div>
+
+                <!-- the desktop with the notification -->
+                <div id="desktop" class="desktop hidden">
+                    <div class="notification">
+                        <p class="notification-app">Student Portal</p>
+                        <p id="notificationTitle" class="notification-title"></p>
+                        <p id="notificationText" class="notification-text"></p>
+                    </div>
+                    <button id="backButton" class="button">Back</button>
+                </div>
+
+            </div>
+
         </div>
-
-        <!-- choose a laptop screen to explore -->
-        <div id="chooser" class="chooser hidden">
-          <button id="irmaButton" class="choice">Irma's laptop</button>
-          <button id="jaydenButton" class="choice">Jayden's laptop</button>
-        </div>
-
-        <!-- the desktop with the notification -->
-        <div id="desktop" class="desktop hidden">
-          <div class="notification">
-            <p class="notification-app">Student Portal</p>
-            <p id="notificationTitle" class="notification-title"></p>
-            <p id="notificationText" class="notification-text"></p>
-          </div>
-          <button id="backButton" class="button">Back</button>
-        </div>
-
-      </div>
-
     </div>
-  </div>
 
-  <p class="footer">Made by Sanjana, Jayden, Sarah & Irma at NYUAD.</p>
+    <p class="footer">Made by Sanjana, Jayden, Sarah & Irma at NYUAD.</p>
 
-  <script src="notifications.js"></script>
+    <script src="notifications.js"></script>
 </body>
+
 </html>

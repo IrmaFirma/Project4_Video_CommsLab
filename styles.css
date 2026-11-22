@@ -1,0 +1,220 @@
+body {
+    margin: 0;
+    background-color: #1c1c1e;
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* project name is displayed is on the side */
+.side-title {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+
+    /* learned about transform rotate here: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/rotate */
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    font-size: 14px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #8e8e93;
+}
+
+/* original laptop photo with thescreen placed on top of the white area */
+.laptop {
+    position: relative;
+    width: 1000px;
+    margin: 20px auto 0 auto;
+}
+
+.laptop-photo {
+    width: 100%;
+
+    /* learned more about display block from here: https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Block_and_inline_layout */
+    display: block;
+}
+
+.screen {
+    position: absolute;
+    left: 16.1%;
+    top: 1.5%;
+    width: 66.4%;
+    height: 50.2%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #f2f2f7;
+    color: black;
+
+    /* learned about clip-path from https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/clip-path */
+    /* cuts the corners so it matches the slanted edges of the screen */
+    clip-path: polygon(0% 0%, 100% 0%, 95.1% 100%, 3.7% 100%);
+}
+
+/* mac OS inspired menu bar */
+.menubar {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* tabs like Safari (inspiration) */
+.tabs {
+    display: flex;
+    gap: 6px;
+    padding: 8px 10px 0 10px;
+    background-color: #e5e5ea;
+}
+
+.tab {
+    padding: 8px 20px;
+    background-color: #d1d1d6;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 8px 8px 0 0;
+}
+
+.tab.active {
+    background-color: white;
+    font-weight: bold;
+}
+
+/* call tab lights up when all moments of the day are visited */
+/* IRMA TODO: add a class to the call tab when all moments of the day are visited */
+.tab.ready {
+    background-color: #ff9f0a;
+    color: white;
+}
+
+.content {
+    position: relative;
+    flex: 1;
+    background-color: white;
+}
+
+/* call page setup so I can just add the video when filmed */
+.call-content {
+    background-color: #1c1c1e;
+}
+
+#callVideo {
+    width: 100%;
+    height: calc(100% - 30px);
+    display: block;
+    background-color: #2c2c2e;
+}
+
+.names {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-size: 14px;
+    padding-top: 8px;
+}
+
+.button {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 24px;
+    font-size: 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #0a84ff;
+    color: white;
+    cursor: pointer;
+}
+
+.black-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 20%;
+    box-sizing: border-box;
+}
+
+/* Notification Page Styling */
+
+/* clip box styling for the video to be displayed in */
+.clip-box video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #2c2c2e;
+}
+
+.chooser {
+    text-align: center;
+    padding-top: 18%;
+}
+
+.choice {
+    margin: 0 10px;
+    padding: 14px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    background-color: #e5e5ea;
+    cursor: pointer;
+}
+
+.choice:hover {
+    background-color: #0a84ff;
+    color: white;
+}
+
+/* NOTE FOR TEAM MEMBERS */
+/* notification desktop styling can be reused for other desktop and icons */
+.desktop {
+    height: 100%;
+    background: linear-gradient(135deg, #5e5ce6, #64d2ff);
+}
+
+.notification {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 300px;
+    padding: 12px 16px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.notification-app {
+    margin: 0;
+    font-size: 12px;
+    color: #6e6e73;
+}
+
+.notification-title {
+    margin: 4px 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.notification-text {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* footer styling universal */
+.footer {
+    text-align: center;
+    font-size: 13px;
+    color: #8e8e93;
+    margin-top: 20px;
+}
