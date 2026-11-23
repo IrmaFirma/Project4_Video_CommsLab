@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: #1c1c1e;
+    background-color: #FF6082;
     font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
     color: white;
 }
@@ -21,7 +21,7 @@ body {
     font-size: 14px;
     letter-spacing: 6px;
     text-transform: uppercase;
-    color: #8e8e93;
+    color: white;
 }
 
 /* original laptop photo with thescreen placed on top of the white area */
@@ -215,6 +215,6 @@ body {
 .footer {
     text-align: center;
     font-size: 13px;
-    color: #8e8e93;
+    color: white;
     margin-top: 20px;
 }
