@@ -106,17 +106,9 @@ body {
 
 #callVideo {
     width: 100%;
-    height: calc(100% - 30px);
+    height: 100%;
     display: block;
     background-color: #2c2c2e;
-}
-
-.names {
-    display: flex;
-    justify-content: space-around;
-    color: white;
-    font-size: 14px;
-    padding-top: 8px;
 }
 
 .button {
