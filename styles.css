@@ -53,6 +53,7 @@ body {
     /* learned about clip-path from https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/clip-path */
     /* cuts the corners so it matches the slanted edges of the screen */
     clip-path: polygon(0% 0%, 100% 0%, 95.1% 100%, 3.7% 100%);
+    border-radius: 13px 13px 0 0;
 }
 
 /* mac OS inspired menu bar */
