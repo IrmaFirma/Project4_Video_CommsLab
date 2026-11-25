@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecture</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- desktop, icon and window styles are shared with the notifications page -->
+    <link rel="stylesheet" href="notifications.css">
 </head>
 
 <body>
@@ -30,22 +32,235 @@
 
             <div class="content">
 
+                <!-- 1. the filmed clip -->
                 <div id="clipBox" class="clip-box">
                     <video id="lectureVideo" src="assets/lecture.mp4"></video>
                     <button id="playButton" class="button hidden">Play clip</button>
+                    <button id="skipButton" class="skip-button">Skip clip</button>
                 </div>
 
+                <!-- 2. choose a laptop -->
                 <div id="chooser" class="chooser hidden">
+                    <p class="chooser-question">Whose laptop do you want to look at?</p>
                     <button id="irmaButton" class="choice">Irma's laptop</button>
                     <button id="jaydenButton" class="choice">Jayden's laptop</button>
+                    <button id="replayButton" class="link-button">Watch clip again</button>
+                    <button id="nextButton" class="button">Go to Notifications</button>
                 </div>
 
-                <div id="irmaDesktop" class="desktop hidden">
-                    <button id="irmaBackButton" class="button">Back</button>
+
+                <!-- ================= IRMA'S LAPTOP (prepared) ================= -->
+                <div id="irmaDesktop" class="desktop irma hidden">
+
+                    <button class="back-button" onclick="goBack()">&larr; Back</button>
+
+                    <!-- icons in a neat column -->
+                    <button class="icon" style="left: 14px; top: 50px;" onclick="openWindow('irmaCalendar')">
+                        <span class="icon-art red">📅</span>Calendar
+                    </button>
+                    <button class="icon" style="left: 14px; top: 130px;" onclick="openWindow('irmaNotes')">
+                        <span class="icon-art yellow">📝</span>Notes
+                    </button>
+                    <button class="icon" style="left: 14px; top: 210px;" onclick="openWindow('irmaBrowser')">
+                        <span class="icon-art blue">🌐</span>Browser
+                    </button>
+                    <button class="icon" style="left: 14px; top: 290px;" onclick="openWindow('irmaTodo')">
+                        <span class="icon-art green">✅</span>To-do
+                    </button>
+
+                    <div class="notification-list">
+                        <div class="notification">
+                            <p class="notification-app">Calendar</p>
+                            <p class="notification-title">Algorithms lecture</p>
+                            <p class="notification-text">Now - slides already downloaded</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaCalendar" class="window hidden" style="left: 120px; top: 40px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaCalendar')"></button>
+                            Calendar
+                        </div>
+                        <div class="window-body">
+                            <h3>This week</h3>
+                            <p class="event"><b>Wed</b> Algorithms lecture, 2:00 PM</p>
+                            <p class="event"><b>Wed</b> Study session, 4:00 PM</p>
+                            <p class="event important"><b>Fri</b> Problem set 5 due (half done)</p>
+                            <p class="event"><b>Mon</b> Quiz: dynamic programming</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaNotes" class="window hidden" style="left: 150px; top: 60px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaNotes')"></button>
+                            Lecture notes
+                        </div>
+                        <div class="window-body">
+                            <h3>Week 12: Knapsack problem</h3>
+                            <p><b>Goal:</b> pick items to get the most value without going over the weight limit</p>
+                            <p><b>Idea:</b> for each item, either take it or skip it</p>
+                            <p><b>Table:</b> V[i][w] = best value using the first i items with weight w</p>
+                            <p><b>Runtime:</b> O(nW)</p>
+                            <p class="grey">Ask in office hours: why is O(nW) not "polynomial"?</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaBrowser" class="window hidden" style="left: 180px; top: 50px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaBrowser')"></button>
+                            Browser
+                        </div>
+                        <div class="browser-tabs">
+                            <span class="browser-tab current">Week 12 slides</span>
+                            <span class="browser-tab">Problem set 5</span>
+                            <span class="browser-tab">Knapsack visualizer</span>
+                        </div>
+                        <div class="window-body">
+                            <h3>Week 12 - Dynamic Programming</h3>
+                            <p>Slide 8 of 31</p>
+                            <p class="grey">Downloaded last night</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaTodo" class="window hidden" style="left: 210px; top: 80px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaTodo')"></button>
+                            To-do
+                        </div>
+                        <div class="window-body">
+                            <h3>Algorithms</h3>
+                            <p class="done">✓ Read chapter 6 before lecture</p>
+                            <p class="done">✓ Download slides</p>
+                            <p class="done">✓ Problem set 5: Q1 - Q3</p>
+                            <p>☐ Problem set 5: Q4 - Q6 (Thursday)</p>
+                            <p>☐ Review for Monday quiz</p>
+                        </div>
+                    </div>
+
+                    <div class="taskbar">
+                        <b>Irma's laptop</b>
+                        <b>Wed 2:15 PM</b>
+                    </div>
                 </div>
 
-                <div id="jaydenDesktop" class="desktop hidden">
-                    <button id="jaydenBackButton" class="button">Back</button>
+
+                <!-- ================= JAYDEN'S LAPTOP (catching up) ================= -->
+                <div id="jaydenDesktop" class="desktop jayden hidden">
+
+                    <button class="back-button" onclick="goBack()">&larr; Back</button>
+
+                    <!-- icons all over the place -->
+                    <button class="icon" style="left: 50px; top: 60px;" onclick="openWindow('jaydenBrowser')">
+                        <span class="icon-art blue">🌐</span>Browser
+                    </button>
+                    <button class="icon" style="left: 260px; top: 90px;" onclick="openWindow('jaydenNotes')">
+                        <span class="icon-art yellow">📝</span>lecture??
+                    </button>
+                    <button class="icon" style="left: 140px; top: 220px;" onclick="openWindow('jaydenChat')">
+                        <span class="icon-art green">💬</span>Messages
+                        <span class="badge">8</span>
+                    </button>
+                    <button class="icon" style="left: 390px; top: 260px;" onclick="openWindow('jaydenCalendar')">
+                        <span class="icon-art red">📅</span>Calendar
+                    </button>
+                    <button class="icon" style="left: 40px; top: 340px;" onclick="openWindow('jaydenPhoto')">
+                        <span class="icon-art orange">🖼️</span>IMG_4821.jpg
+                    </button>
+
+                    <div class="notification-list">
+                        <div class="notification">
+                            <p class="notification-app">Calendar</p>
+                            <p class="notification-title">Algorithms lecture</p>
+                            <p class="notification-text">Started 15 minutes ago</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Student Portal</p>
+                            <p class="notification-title">Problem set 5</p>
+                            <p class="notification-text">Due Friday - not started</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Messages</p>
+                            <p class="notification-title">Basketball tonight?</p>
+                            <p class="notification-text">Leo: 6pm, you in?</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenBrowser" class="window hidden" style="left: 70px; top: 30px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenBrowser')"></button>
+                            Browser
+                        </div>
+                        <div class="browser-tabs">
+                            <span class="browser-tab">NBA scores</span>
+                            <span class="browser-tab current">knapsack problem explained simply</span>
+                            <span class="browser-tab">YouTube</span>
+                            <span class="browser-tab">Week 11 slides</span>
+                            <span class="browser-tab">sneaker drop</span>
+                            <span class="browser-tab">what is dynamic programming</span>
+                        </div>
+                        <div class="window-body">
+                            <h3>knapsack problem explained simply</h3>
+                            <p class="grey">Video paused at 0:42 / 18:10</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenNotes" class="window hidden" style="left: 200px; top: 70px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenNotes')"></button>
+                            lecture??
+                        </div>
+                        <div class="window-body">
+                            <p>knapsack - main goal?</p>
+                            <p>- variables</p>
+                            <p>- time complexity</p>
+                            <p>- basketball 6pm</p>
+                            <p>to do list:</p>
+                            <p>- studying ct</p>
+                            <p class="grey">(ask irma for the rest)</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenChat" class="window hidden" style="left: 230px; top: 100px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenChat')"></button>
+                            Messages - Algorithms group
+                        </div>
+                        <div class="window-body">
+                            <p class="message me">yo what did we cover so far</p>
+                            <p class="message me">can someone send the slides</p>
+                            <p class="message">Irma: knapsack, slides are on the portal since yesterday</p>
+                            <p class="message">Irma: page 8 rn</p>
+                            <p class="message me">legend</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenCalendar" class="window hidden" style="left: 280px; top: 60px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenCalendar')"></button>
+                            Calendar
+                        </div>
+                        <div class="window-body">
+                            <h3>Wednesday</h3>
+                            <p class="event"><b>14:00</b> Algorithms</p>
+                            <p class="event important"><b>18:00</b> basketball!!</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenPhoto" class="window hidden" style="left: 150px; top: 110px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenPhoto')"></button>
+                            IMG_4821.jpg
+                        </div>
+                        <div class="window-body">
+                            <p><b>Photo of the whiteboard</b></p>
+                            <p class="grey">Blurry. Half of it is cut off.</p>
+                        </div>
+                    </div>
+
+                    <div class="taskbar">
+                        <b>Jayden's laptop</b>
+                        <b>Wed 2:15 PM</b>
+                    </div>
                 </div>
 
             </div>
