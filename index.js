@@ -9,10 +9,9 @@ var blackScreen = document.getElementById("blackScreen");
 // learned about localStorage here: https://youtu.be/AUOzvFzdIk4?si=3f9KKBYsUOjZuQQR
 var isEnding = localStorage.getItem("callEnding") == "yes";
 
-// zoom end video to play second part
- if (isEnding) {
-  video.src = "assets/zoom-end.mp4";
-  localStorage.removeItem("callEnding"); // fix bug with video not loading 
+// comes back to zoom video as end restart
+if (isEnding) {
+    video.src = "assets/zoom.mp4";
 }
 
 // hide the instruction text once the video starts playing
