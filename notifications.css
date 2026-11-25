@@ -1,0 +1,247 @@
+/* Notifications page only (Sanjana) */
+
+.clip-box {
+    height: 100%;
+}
+
+.desktop {
+    position: relative;
+    overflow: hidden;
+}
+
+/* notification slides in from the right */
+.slide-in {
+    right: -340px;
+    transition: right 0.6s;
+}
+
+.slide-in.show {
+    right: 15px;
+}
+
+/* chooser text */
+.chooser-question {
+    font-size: 17px;
+    margin-bottom: 22px;
+}
+
+/* different wallpaper for each person */
+.irma {
+    background: linear-gradient(160deg, #a8e0ff, #4a6fe0);
+}
+
+.jayden {
+    background: linear-gradient(135deg, #ff7eb3, #ff9f43, #feca57);
+}
+
+/* desktop icons */
+.icon {
+    position: absolute;
+    width: 80px;
+    border: none;
+    background: none;
+    color: white;
+    font-family: inherit;
+    font-size: 11px;
+    text-shadow: 0 1px 2px black;
+    cursor: pointer;
+}
+
+.icon-art {
+    display: block;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 4px auto;
+    border-radius: 10px;
+    font-size: 24px;
+    line-height: 44px;
+    text-shadow: none;
+}
+
+.red { background-color: #ff3b30; }
+.yellow { background-color: #ffcc00; }
+.blue { background-color: #0a84ff; }
+.green { background-color: #34c759; }
+.lightblue { background-color: #5ac8fa; }
+.purple { background-color: #af52de; }
+.orange { background-color: #ff9500; }
+
+/* red number on the messages icon */
+.badge {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    background-color: #ff3b30;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+/* notifications stacked in the top right */
+.notification-list {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 280px;
+}
+
+.notification-list .notification {
+    position: static;
+    width: auto;
+    margin-bottom: 8px;
+    padding: 9px 13px;
+}
+
+.notification-done {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: green;
+}
+
+/* pop up windows */
+.window {
+    position: absolute;
+    width: 320px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.window-bar {
+    padding: 7px 10px;
+    background-color: #e0e0e0;
+    font-weight: bold;
+}
+
+.close {
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ff5f57;
+    cursor: pointer;
+}
+
+.window-body {
+    padding: 10px 14px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.window-body h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+}
+
+.window-body p {
+    margin: 0 0 6px 0;
+}
+
+.done {
+    color: grey;
+    text-decoration: line-through;
+}
+
+.grey {
+    color: grey;
+}
+
+/* calendar */
+.event {
+    padding: 5px 8px;
+    border-left: 3px solid #0a84ff;
+    background-color: #eef5ff;
+}
+
+.event.important {
+    border-left-color: #ff3b30;
+    background-color: #fff0ef;
+}
+
+/* browser tabs */
+.browser-tabs {
+    display: flex;
+    gap: 3px;
+    padding: 5px 6px 0 6px;
+    background-color: #e5e5ea;
+    overflow: hidden;
+}
+
+.browser-tab {
+    padding: 4px 8px;
+    font-size: 11px;
+    background-color: #d1d1d6;
+    border-radius: 5px 5px 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.browser-tab.current {
+    background-color: white;
+    font-weight: bold;
+}
+
+.status {
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.good {
+    background-color: #e3f8e8;
+    color: green;
+}
+
+.bad {
+    background-color: #ffe5e3;
+    color: red;
+}
+
+/* chat bubbles */
+.message {
+    width: fit-content;
+    max-width: 80%;
+    padding: 6px 10px;
+    border-radius: 12px;
+    background-color: #e9e9eb;
+}
+
+.message.me {
+    margin-left: auto;
+    background-color: #0a84ff;
+    color: white;
+}
+
+/* bar along the bottom */
+.taskbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 9px 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    z-index: 999;
+}
+
+/* back button in the top left */
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 14px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    cursor: pointer;
+}

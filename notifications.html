@@ -1,5 +1,5 @@
-<!-- Setup for Sanjana -->
 <!DOCTYPE html>
+<!-- Setup for Sanjana -->
 <html lang="en">
 
 <head>
@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- extra styles just for this page -->
+    <link rel="stylesheet" href="notifications.css">
 </head>
 
 <body>
@@ -31,27 +33,290 @@
 
             <div class="content">
 
-                <!-- starts with the filmed clip -->
-                <div id="clipBox" class="clip-box">
-                    <video id="notificationVideo" src="assets/notifications.mp4"></video>
-                    <button id="playButton" class="button">Play clip</button>
-                    <button id="backToCallButton" class="button hidden">Back to the call</button>
+                <!-- 1. plain desktop, the notification pops in first -->
+                <div id="intro" class="desktop">
+                    <div id="introNotification" class="notification slide-in">
+                        <p class="notification-app">Student Portal</p>
+                        <p class="notification-title">Project 4 is due tomorrow</p>
+                        <p class="notification-text">Submit your video website by 11:59 PM.</p>
+                    </div>
+                    <button id="playButton" class="button hidden">Play clip</button>
                 </div>
 
-                <!-- choose a laptop screen to explore -->
+                <!-- 2. the filmed clip -->
+                <div id="clipBox" class="clip-box hidden">
+                    <video id="notificationVideo" src="assets/notifications.mp4"></video>
+                </div>
+
+                <!-- 3. choose a laptop -->
                 <div id="chooser" class="chooser hidden">
+                    <p class="chooser-question">Whose laptop do you want to look at?</p>
                     <button id="irmaButton" class="choice">Irma's laptop</button>
                     <button id="jaydenButton" class="choice">Jayden's laptop</button>
                 </div>
 
-                <!-- the desktop with the notification -->
-                <div id="desktop" class="desktop hidden">
-                    <div class="notification">
-                        <p class="notification-app">Student Portal</p>
-                        <p id="notificationTitle" class="notification-title"></p>
-                        <p id="notificationText" class="notification-text"></p>
+
+                <!-- ================= IRMA'S LAPTOP (organised) ================= -->
+                <div id="irmaDesktop" class="desktop irma hidden">
+
+                    <button class="back-button" onclick="goBack()">&larr; Back</button>
+
+                    <!-- icons in a neat column -->
+                    <button class="icon" style="left: 14px; top: 50px;" onclick="openWindow('irmaCalendar')">
+                        <span class="icon-art red">📅</span>Calendar
+                    </button>
+                    <button class="icon" style="left: 14px; top: 130px;" onclick="openWindow('irmaNotes')">
+                        <span class="icon-art yellow">📝</span>Notes
+                    </button>
+                    <button class="icon" style="left: 14px; top: 210px;" onclick="openWindow('irmaBrowser')">
+                        <span class="icon-art blue">🌐</span>Browser
+                    </button>
+                    <button class="icon" style="left: 14px; top: 290px;" onclick="openWindow('irmaChat')">
+                        <span class="icon-art green">💬</span>Messages
+                    </button>
+                    <button class="icon" style="left: 14px; top: 370px;" onclick="openWindow('irmaFolder')">
+                        <span class="icon-art lightblue">📁</span>Project 4
+                    </button>
+
+                    <!-- her notification, already dealt with -->
+                    <div class="notification-list">
+                        <div class="notification">
+                            <p class="notification-app">Student Portal</p>
+                            <p class="notification-title">Project 4 is due tomorrow</p>
+                            <p class="notification-text">Submit your video website by 11:59 PM.</p>
+                            <p class="notification-done">✓ Already submitted</p>
+                        </div>
                     </div>
-                    <button id="backButton" class="button">Back</button>
+
+                    <!-- windows (hidden until you click an icon) -->
+                    <div id="irmaCalendar" class="window hidden" style="left: 120px; top: 40px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaCalendar')"></button>
+                            Calendar
+                        </div>
+                        <div class="window-body">
+                            <h3>Monday</h3>
+                            <p class="event"><b>9:00</b> Lecture</p>
+                            <p class="event"><b>11:00</b> Edit Project 4 clips</p>
+                            <p class="event"><b>13:00</b> Lunch with Sarah</p>
+                            <p class="event important"><b>18:00</b> Submit Project 4 (a day early)</p>
+                            <p class="event"><b>20:00</b> Gym</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaNotes" class="window hidden" style="left: 150px; top: 70px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaNotes')"></button>
+                            Notes
+                        </div>
+                        <div class="window-body">
+                            <h3>Project 4 checklist</h3>
+                            <p class="done">✓ Film all scenes</p>
+                            <p class="done">✓ Edit clips side by side</p>
+                            <p class="done">✓ Code my page</p>
+                            <p class="done">✓ Test every tab</p>
+                            <p class="done">✓ Submit</p>
+                            <p>☐ Write documentation (tomorrow morning)</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaBrowser" class="window hidden" style="left: 180px; top: 50px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaBrowser')"></button>
+                            Browser
+                        </div>
+                        <div class="browser-tabs">
+                            <span class="browser-tab current">Student Portal</span>
+                            <span class="browser-tab">MDN Web Docs</span>
+                        </div>
+                        <div class="window-body">
+                            <h3>Comms Lab - Project 4</h3>
+                            <p class="status good">Submission received<br>Submitted Mon 6:02 PM</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaChat" class="window hidden" style="left: 210px; top: 80px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaChat')"></button>
+                            Messages - Project 4 group
+                        </div>
+                        <div class="window-body">
+                            <p class="message">Jayden: wait what's due tomorrow</p>
+                            <p class="message me">the website!! i already submitted mine</p>
+                            <p class="message me">want me to send you the checklist?</p>
+                            <p class="message">Jayden: oh</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaFolder" class="window hidden" style="left: 240px; top: 110px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaFolder')"></button>
+                            Project 4
+                        </div>
+                        <div class="window-body">
+                            <p>📁 01_footage</p>
+                            <p>📁 02_edits</p>
+                            <p>📁 03_website</p>
+                            <p>📁 04_documentation</p>
+                        </div>
+                    </div>
+
+                    <div class="taskbar">
+                        <b>Irma's laptop</b>
+                        <b>Mon 10:15 PM</b>
+                    </div>
+                </div>
+
+
+                <!-- ================= JAYDEN'S LAPTOP (last minute) ================= -->
+                <div id="jaydenDesktop" class="desktop jayden hidden">
+
+                    <button class="back-button" onclick="goBack()">&larr; Back</button>
+
+                    <!-- icons all over the place -->
+                    <button class="icon" style="left: 40px; top: 60px;" onclick="openWindow('jaydenBrowser')">
+                        <span class="icon-art blue">🌐</span>Browser
+                    </button>
+                    <button class="icon" style="left: 230px; top: 70px;" onclick="openWindow('jaydenVideo')">
+                        <span class="icon-art purple">🎬</span>final_FINAL_v3.mp4
+                    </button>
+                    <button class="icon" style="left: 140px; top: 190px;" onclick="openWindow('jaydenChat')">
+                        <span class="icon-art green">💬</span>Messages
+                        <span class="badge">12</span>
+                    </button>
+                    <button class="icon" style="left: 320px; top: 230px;" onclick="openWindow('jaydenScreenshot')">
+                        <span class="icon-art orange">🖼️</span>Screenshot 2026-11-24.png
+                    </button>
+                    <button class="icon" style="left: 30px; top: 310px;" onclick="openWindow('jaydenNotes')">
+                        <span class="icon-art yellow">📝</span>notes copy
+                    </button>
+                    <button class="icon" style="left: 430px; top: 140px;" onclick="openWindow('jaydenFolder')">
+                        <span class="icon-art lightblue">📁</span>untitled folder
+                    </button>
+                    <button class="icon" style="left: 220px; top: 350px;" onclick="openWindow('jaydenCalendar')">
+                        <span class="icon-art red">📅</span>Calendar
+                    </button>
+
+                    <!-- way too many notifications -->
+                    <div class="notification-list">
+                        <div class="notification">
+                            <p class="notification-app">Student Portal</p>
+                            <p class="notification-title">Project 4 is due tomorrow</p>
+                            <p class="notification-text">Submit your video website by 11:59 PM.</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Messages</p>
+                            <p class="notification-title">Project 4 group</p>
+                            <p class="notification-text">12 new messages</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Battery</p>
+                            <p class="notification-title">Low battery</p>
+                            <p class="notification-text">9% remaining</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Calendar</p>
+                            <p class="notification-title">Nothing scheduled today</p>
+                            <p class="notification-text">Enjoy your free day!</p>
+                        </div>
+                    </div>
+
+                    <!-- windows -->
+                    <div id="jaydenBrowser" class="window hidden" style="left: 60px; top: 30px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenBrowser')"></button>
+                            Browser
+                        </div>
+                        <div class="browser-tabs">
+                            <span class="browser-tab">YouTube</span>
+                            <span class="browser-tab">how to make a website fast</span>
+                            <span class="browser-tab">pizza near me</span>
+                            <span class="browser-tab current">Student Portal</span>
+                            <span class="browser-tab">football scores</span>
+                            <span class="browser-tab">MDN</span>
+                            <span class="browser-tab">is it too late to start</span>
+                        </div>
+                        <div class="window-body">
+                            <h3>Comms Lab - Project 4</h3>
+                            <p class="status bad">Not submitted<br>Due tomorrow 11:59 PM</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenChat" class="window hidden" style="left: 200px; top: 90px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenChat')"></button>
+                            Messages - Project 4 group
+                        </div>
+                        <div class="window-body">
+                            <p class="message">Irma: reminder project 4 is due tuesday!!</p>
+                            <p class="message">Sarah: did everyone upload their clips?</p>
+                            <p class="message me">wait what's due tomorrow</p>
+                            <p class="message">Irma: the website!! i already submitted mine</p>
+                            <p class="message">Irma: want me to send you the checklist?</p>
+                            <p class="message me">oh</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenNotes" class="window hidden" style="left: 120px; top: 120px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenNotes')"></button>
+                            notes copy
+                        </div>
+                        <div class="window-body">
+                            <p>- do the thing</p>
+                            <p>- project ???</p>
+                            <p>- buy charger</p>
+                            <p>- website idea: laptop but</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenCalendar" class="window hidden" style="left: 260px; top: 60px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenCalendar')"></button>
+                            Calendar
+                        </div>
+                        <div class="window-body">
+                            <h3>Monday</h3>
+                            <p class="grey">No events</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenVideo" class="window hidden" style="left: 160px; top: 40px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenVideo')"></button>
+                            final_FINAL_v3.mp4
+                        </div>
+                        <div class="window-body">
+                            <p><b>0:00 / 0:00</b></p>
+                            <p class="grey">This file is empty. Last opened 3 weeks ago.</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenScreenshot" class="window hidden" style="left: 230px; top: 130px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenScreenshot')"></button>
+                            Screenshot 2026-11-24.png
+                        </div>
+                        <div class="window-body">
+                            <p class="message">Irma: don't forget project 4 is due tue!!</p>
+                            <p class="grey">Screenshot saved, never looked at again.</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenFolder" class="window hidden" style="left: 290px; top: 100px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenFolder')"></button>
+                            untitled folder
+                        </div>
+                        <div class="window-body">
+                            <p class="grey">This folder is empty.</p>
+                        </div>
+                    </div>
+
+                    <div class="taskbar">
+                        <b>Jayden's laptop</b>
+                        <b>Mon 10:15 PM</b>
+                    </div>
                 </div>
 
             </div>
