@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1 class="side-title">Same Day, Two Screens</h1>
+
+    <div class="laptop">
+        <img class="laptop-photo" src="assets/laptop.png">
+        <div class="screen">
+
+            <div class="menubar">
+                <span>Same Day, Two Screens</span>
+            </div>
+
+            <div class="tabs">
+                <a href="index.html" id="callTab" class="tab">Call</a>
+                <a href="walk.html" class="tab active">Walk</a>
+                <a href="food.html" class="tab">Food</a>
+                <a href="lecture.html" class="tab">Lecture</a>
+                <a href="notifications.html" class="tab">Notifications</a>
+            </div>
+
+            <div class="content">
+
+                <div id="clipBox" class="clip-box">
+                    <video id="lectureVideo" src="assets/lecture.mp4"></video>
+                    <button id="playButton" class="button hidden">Play clip</button>
+                </div>
+
+                <div id="chooser" class="chooser hidden">
+                    <button id="irmaButton" class="choice">Irma's laptop</button>
+                    <button id="jaydenButton" class="choice">Jayden's laptop</button>
+                </div>
+
+                <div id="irmaDesktop" class="desktop hidden">
+                    <button id="irmaBackButton" class="button">Back</button>
+                </div>
+
+                <div id="jaydenDesktop" class="desktop hidden">
+                    <button id="jaydenBackButton" class="button">Back</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <p class="footer">Made by Sanjana, Jayden, Sarah & Irma at NYUAD.</p>
+
+    <script src="lecture.js"></script>
+</body>
+
+</html>
