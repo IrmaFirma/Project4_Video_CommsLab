@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- desktop, icon and window styles are shared with the notifications page -->
+    <link rel="stylesheet" href="notifications.css">
 </head>
 
 <body>
@@ -30,30 +32,242 @@
 
             <div class="content">
 
+                <!-- 1. the filmed clip -->
                 <div id="clipBox" class="clip-box">
                     <video id="foodVideo" src="assets/food.mp4"></video>
                     <button id="playButton" class="button hidden">Play clip</button>
+                    <button id="skipButton" class="skip-button">Skip clip</button>
                 </div>
 
+                <!-- 2. choose a laptop -->
                 <div id="chooser" class="chooser hidden">
+                    <p class="chooser-question">Whose laptop do you want to look at?</p>
                     <button id="irmaButton" class="choice">Irma's laptop</button>
                     <button id="jaydenButton" class="choice">Jayden's laptop</button>
+                    <button id="replayButton" class="link-button">Watch clip again</button>
+                    <button id="nextButton" class="button">Go to Lecture</button>
                 </div>
 
-                <div id="irmaDesktop" class="desktop hidden">
-                    <button id="irmaBackButton" class="button">Back</button>
+
+                <!-- ================= IRMA'S LAPTOP (planned lunch) ================= -->
+                <div id="irmaDesktop" class="desktop irma hidden">
+
+                    <button class="back-button" onclick="goBack()">&larr; Back</button>
+
+                    <!-- icons in a neat column -->
+                    <button class="icon" style="left: 14px; top: 50px;" onclick="openWindow('irmaCalendar')">
+                        <span class="icon-art red">📅</span>Calendar
+                    </button>
+                    <button class="icon" style="left: 14px; top: 130px;" onclick="openWindow('irmaMeals')">
+                        <span class="icon-art yellow">📝</span>Meal plan
+                    </button>
+                    <button class="icon" style="left: 14px; top: 210px;" onclick="openWindow('irmaChat')">
+                        <span class="icon-art green">💬</span>Messages
+                    </button>
+                    <button class="icon" style="left: 14px; top: 290px;" onclick="openWindow('irmaBrowser')">
+                        <span class="icon-art blue">🌐</span>Browser
+                    </button>
+
+                    <div class="notification-list">
+                        <div class="notification">
+                            <p class="notification-app">Calendar</p>
+                            <p class="notification-title">Lunch + reading</p>
+                            <p class="notification-text">Now until 1:30 PM</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Reminder</p>
+                            <p class="notification-title">Lecture at 2:00 PM</p>
+                            <p class="notification-text">Bring iPad + charger</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaCalendar" class="window hidden" style="left: 120px; top: 40px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaCalendar')"></button>
+                            Calendar
+                        </div>
+                        <div class="window-body">
+                            <h3>Wednesday</h3>
+                            <p class="event"><b>10:00</b> Lecture</p>
+                            <p class="event important"><b>12:30</b> Lunch outside + Comms Lab reading</p>
+                            <p class="event"><b>14:00</b> Algorithms lecture</p>
+                            <p class="event"><b>16:00</b> Library</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaMeals" class="window hidden" style="left: 150px; top: 70px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaMeals')"></button>
+                            Meal plan
+                        </div>
+                        <div class="window-body">
+                            <h3>This week</h3>
+                            <p class="done">✓ Mon: pasta at the dining hall</p>
+                            <p class="done">✓ Tue: salad with Sarah</p>
+                            <p><b>→ Wed: yogurt + granola (packed last night)</b></p>
+                            <p>☐ Thu: lunch with Sarah, 12:30</p>
+                            <p>☐ Fri: grocery run</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaChat" class="window hidden" style="left: 180px; top: 50px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaChat')"></button>
+                            Messages - Sarah
+                        </div>
+                        <div class="window-body">
+                            <p class="message">Sarah: lunch today?</p>
+                            <p class="message me">can't today, eating outside and doing the reading before 2pm</p>
+                            <p class="message me">tomorrow 12:30?</p>
+                            <p class="message">Sarah: deal, i'll put it in my calendar</p>
+                        </div>
+                    </div>
+
+                    <div id="irmaBrowser" class="window hidden" style="left: 210px; top: 80px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('irmaBrowser')"></button>
+                            Browser
+                        </div>
+                        <div class="browser-tabs">
+                            <span class="browser-tab current">Comms Lab reading (PDF)</span>
+                            <span class="browser-tab">Library hours</span>
+                        </div>
+                        <div class="window-body">
+                            <h3>Week 12 reading</h3>
+                            <p>Page 14 of 20</p>
+                            <p class="grey">Highlights saved: 6</p>
+                        </div>
+                    </div>
+
+                    <div class="taskbar">
+                        <b>Irma's laptop</b>
+                        <b>Wed 12:40 PM</b>
+                    </div>
                 </div>
 
-                <div id="jaydenDesktop" class="desktop hidden">
-                    <button id="jaydenBackButton" class="button">Back</button>
+
+                <!-- ================= JAYDEN'S LAPTOP (no plan) ================= -->
+                <div id="jaydenDesktop" class="desktop jayden hidden">
+
+                    <button class="back-button" onclick="goBack()">&larr; Back</button>
+
+                    <!-- icons all over the place -->
+                    <button class="icon" style="left: 60px; top: 70px;" onclick="openWindow('jaydenFoodApp')">
+                        <span class="icon-art orange">🍔</span>Food app
+                    </button>
+                    <button class="icon" style="left: 250px; top: 120px;" onclick="openWindow('jaydenChat')">
+                        <span class="icon-art green">💬</span>Messages
+                        <span class="badge">5</span>
+                    </button>
+                    <button class="icon" style="left: 150px; top: 250px;" onclick="openWindow('jaydenBrowser')">
+                        <span class="icon-art blue">🌐</span>Browser
+                    </button>
+                    <button class="icon" style="left: 380px; top: 300px;" onclick="openWindow('jaydenNotes')">
+                        <span class="icon-art yellow">📝</span>notes copy 2
+                    </button>
+                    <button class="icon" style="left: 30px; top: 340px;" onclick="openWindow('jaydenReceipt')">
+                        <span class="icon-art purple">🧾</span>receipt.jpg
+                    </button>
+
+                    <div class="notification-list">
+                        <div class="notification">
+                            <p class="notification-app">Food app</p>
+                            <p class="notification-title">Still hungry?</p>
+                            <p class="notification-text">You left 3 items in your cart 2 hours ago</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Messages</p>
+                            <p class="notification-title">Lunch group</p>
+                            <p class="notification-text">5 new messages</p>
+                        </div>
+                        <div class="notification">
+                            <p class="notification-app">Bank</p>
+                            <p class="notification-title">Card payment</p>
+                            <p class="notification-text">AED 12.00 at Vending Machine</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenFoodApp" class="window hidden" style="left: 80px; top: 40px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenFoodApp')"></button>
+                            Food app
+                        </div>
+                        <div class="window-body">
+                            <h3>Your cart</h3>
+                            <p>1 x Burger meal</p>
+                            <p>1 x Sushi box</p>
+                            <p>1 x Shawarma</p>
+                            <p class="status bad">Order not placed<br>Delivery: 55 min</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenChat" class="window hidden" style="left: 200px; top: 80px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenChat')"></button>
+                            Messages - Lunch group
+                        </div>
+                        <div class="window-body">
+                            <p class="message me">where we eating</p>
+                            <p class="message">Sam: idk</p>
+                            <p class="message">Leo: D2?</p>
+                            <p class="message">Sam: line is crazy</p>
+                            <p class="message me">ok vending machine it is</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenBrowser" class="window hidden" style="left: 120px; top: 60px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenBrowser')"></button>
+                            Browser
+                        </div>
+                        <div class="browser-tabs">
+                            <span class="browser-tab">YouTube</span>
+                            <span class="browser-tab current">food near campus open now</span>
+                            <span class="browser-tab">basketball highlights</span>
+                            <span class="browser-tab">is chips a meal</span>
+                            <span class="browser-tab">Student Portal</span>
+                        </div>
+                        <div class="window-body">
+                            <h3>food near campus open now</h3>
+                            <p class="grey">Dining hall - long wait</p>
+                            <p class="grey">Cafe - closed until 3 PM</p>
+                            <p class="grey">Delivery - 55 min</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenNotes" class="window hidden" style="left: 260px; top: 110px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenNotes')"></button>
+                            notes copy 2
+                        </div>
+                        <div class="window-body">
+                            <p>- eat actual food today</p>
+                            <p>- return library book (overdue??)</p>
+                            <p>- lecture at 2</p>
+                        </div>
+                    </div>
+
+                    <div id="jaydenReceipt" class="window hidden" style="left: 160px; top: 100px;">
+                        <div class="window-bar">
+                            <button class="close" onclick="closeWindow('jaydenReceipt')"></button>
+                            receipt.jpg
+                        </div>
+                        <div class="window-body">
+                            <h3>Vending Machine</h3>
+                            <p>Chips ........ AED 5</p>
+                            <p>Chocolate .... AED 4</p>
+                            <p>Juice ........ AED 3</p>
+                            <p><b>Total ........ AED 12</b></p>
+                        </div>
+                    </div>
+
+                    <div class="taskbar">
+                        <b>Jayden's laptop</b>
+                        <b>Wed 12:40 PM</b>
+                    </div>
                 </div>
 
             </div>
-
-           <button id="nextButton" class="button hidden">Go to Lecture</button>
-
-    </div>
-</div>
 
         </div>
     </div>
