@@ -10,8 +10,9 @@ var blackScreen = document.getElementById("blackScreen");
 var isEnding = localStorage.getItem("callEnding") == "yes";
 
 // zoom end video to play second part
-if (isEnding) {
-    video.src = "assets/zoom.mp4";
+ if (isEnding) {
+  video.src = "assets/zoom-end.mp4";
+  localStorage.removeItem("callEnding"); // fix bug with video not loading 
 }
 
 // hide the instruction text once the video starts playing
@@ -22,6 +23,8 @@ video.onplay = function () {
 };
 
 video.onended = function () {
+
+
     if (isEnding) {
         // the call is over, so show the black screen
         video.classList.add("hidden");
