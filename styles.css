@@ -134,6 +134,7 @@ body {
     padding: 6px 16px;
     font-size: 13px;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
 }
 
 .black-screen {
