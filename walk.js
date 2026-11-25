@@ -21,6 +21,12 @@ playButton.onclick = function () {
     playButton.classList.add("hidden");
 };
 
+// if the video file is missing or broken, skip straight to the laptop choice
+walkVideo.onerror = function () {
+    clipBox.classList.add("hidden");
+    chooser.classList.remove("hidden");
+};
+
 walkVideo.onended = function () {
     clipBox.classList.add("hidden");
     chooser.classList.remove("hidden");
