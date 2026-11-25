@@ -14,6 +14,13 @@ if (isEnding) {
     video.src = "assets/zoom-end.mp4";
 }
 
+// hide the instruction text once the video starts playing
+var startText = document.getElementById("startText");
+
+video.onplay = function () {
+    startText.classList.add("hidden");
+};
+
 video.onended = function () {
     if (isEnding) {
         // the call is over, so show the black screen
