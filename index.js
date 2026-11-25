@@ -1,6 +1,4 @@
 var video = document.getElementById("callVideo");
-var startButton = document.getElementById("startButton");
-var pauseButton = document.getElementById("pauseButton");
 var exploreButton = document.getElementById("exploreButton");
 var blackScreen = document.getElementById("blackScreen");
 
@@ -16,26 +14,7 @@ if (isEnding) {
     video.src = "assets/zoom-end.mp4";
 }
 
-startButton.onclick = function () {
-    video.play();
-    startButton.classList.add("hidden");
-    pauseButton.classList.remove("hidden");
-};
-
-// pause button switches between pausing and resuming the call
-pauseButton.onclick = function () {
-    if (video.paused) {
-        video.play();
-        pauseButton.innerHTML = "Pause";
-    } else {
-        video.pause();
-        pauseButton.innerHTML = "Resume";
-    }
-};
-
 video.onended = function () {
-    pauseButton.classList.add("hidden");
-
     if (isEnding) {
         // the call is over, so show the black screen
         video.classList.add("hidden");
