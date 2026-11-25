@@ -5,7 +5,10 @@ var exploreButton = document.getElementById("exploreButton");
 var blackScreen = document.getElementById("blackScreen");
 
 // the notifications page sets this when the viewer comes back to end the call
+
+// learned about localStorage here: https://www.w3schools.com/jsref/prop_win_localstorage.asp
 // learned about localStorage here: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+// learned about localStorage here: https://youtu.be/AUOzvFzdIk4?si=3f9KKBYsUOjZuQQR
 var isEnding = localStorage.getItem("callEnding") == "yes";
 
 // zoom end video to play second part
