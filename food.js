@@ -9,6 +9,11 @@ var jaydenDesktop = document.getElementById("jaydenDesktop");
 var irmaBackButton = document.getElementById("irmaBackButton");
 var jaydenBackButton = document.getElementById("jaydenBackButton");
 
+var foodVideo = document.getElementById("foodVideo");
+var nextButton = document.getElementById("nextButton");
+
+
+
 // browsers can block videos with sound from starting on their own, so show the play button if that happens
 foodVideo.play().catch(function () {
     playButton.classList.remove("hidden");
@@ -42,4 +47,18 @@ irmaBackButton.onclick = function () {
 jaydenBackButton.onclick = function () {
     jaydenDesktop.classList.add("hidden");
     chooser.classList.remove("hidden");
+};
+
+
+var foodVideo = document.getElementById("foodVideo");
+var nextButton = document.getElementById("nextButton");
+
+// button displayed when video ends
+foodVideo.onended = function () {
+    nextButton.classList.remove("hidden");
+};
+
+// to go to lecture page after food video ends
+nextButton.onclick = function () {
+    window.location.href = "lecture.html";
 };
