@@ -314,3 +314,28 @@ body {
     color: #8e8e93;
     text-decoration: line-through;
 }
+
+/* small skip button in the corner of a clip */
+.skip-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 14px;
+    font-size: 13px;
+    border: none;
+    border-radius: 14px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    cursor: pointer;
+}
+
+.link-button {
+    display: block;
+    margin: 24px auto 0 auto;
+    border: none;
+    background: none;
+    color: #0a84ff;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}

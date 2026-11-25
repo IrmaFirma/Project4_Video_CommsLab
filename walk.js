@@ -1,9 +1,12 @@
 var walkVideo = document.getElementById("walkVideo");
 var playButton = document.getElementById("playButton");
+var skipButton = document.getElementById("skipButton");
 var clipBox = document.getElementById("clipBox");
 var chooser = document.getElementById("chooser");
 var irmaButton = document.getElementById("irmaButton");
 var jaydenButton = document.getElementById("jaydenButton");
+var replayButton = document.getElementById("replayButton");
+var nextButton = document.getElementById("nextButton");
 var irmaDesktop = document.getElementById("irmaDesktop");
 var jaydenDesktop = document.getElementById("jaydenDesktop");
 var irmaBackButton = document.getElementById("irmaBackButton");
@@ -25,15 +28,26 @@ playButton.onclick = function () {
     playButton.classList.add("hidden");
 };
 
-// if the video file is missing or broken, skip straight to the laptop choice
-walkVideo.onerror = function () {
+// shows the laptop choice when the clip ends, is skipped, or the video file is missing
+function showChooser() {
+    walkVideo.pause();
     clipBox.classList.add("hidden");
     chooser.classList.remove("hidden");
+}
+
+walkVideo.onerror = showChooser;
+walkVideo.onended = showChooser;
+skipButton.onclick = showChooser;
+
+replayButton.onclick = function () {
+    chooser.classList.add("hidden");
+    clipBox.classList.remove("hidden");
+    walkVideo.currentTime = 0;
+    walkVideo.play();
 };
 
-walkVideo.onended = function () {
-    clipBox.classList.add("hidden");
-    chooser.classList.remove("hidden");
+nextButton.onclick = function () {
+    window.location.href = "food.html";
 };
 
 irmaButton.onclick = function () {
