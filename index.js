@@ -11,7 +11,7 @@ var isEnding = localStorage.getItem("callEnding") == "yes";
 
 // zoom end video to play second part
 if (isEnding) {
-    video.src = "assets/zoom-end.mp4";
+    video.src = "assets/zoom.mp4";
 }
 
 // hide the instruction text once the video starts playing
