@@ -125,6 +125,17 @@ body {
     cursor: pointer;
 }
 
+/* pause button in the bottom corner of the call */
+.pause-button {
+    bottom: 15px;
+    left: auto;
+    right: 50px;
+    transform: none;
+    padding: 6px 16px;
+    font-size: 13px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 .black-screen {
     position: absolute;
     top: 0;
