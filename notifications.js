@@ -14,7 +14,7 @@ const jaydenDesktop = document.getElementById("jaydenDesktop");
 
 // this is the last moment of the day, so the Call tab now plays the ending
 // (index.js checks for "callEnding" and plays zoom-end.mp4)
-localStorage.setItem("callEnding", "yes");
+sessionStorage.setItem("callEnding", "yes"); // usin sessionStorage instead of localStorage
 
 // light up the Call tab so the viewer knows to go back
 document.getElementById("callTab").classList.add("ready");
