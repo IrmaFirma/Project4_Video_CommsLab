@@ -13,7 +13,7 @@ sessionStorage.removeItem("callEnding");
 
 // comes back to zoom video as end restart
 if (isEnding) {
-    video.src = "assets/zoom-end.mp4";
+    video.src = "assets/zoom.mp4";
 }
 
 // hide the instruction text once the video starts playing
@@ -22,6 +22,8 @@ video.onplay = function () {
 };
 
 video.onended = function () {
+
+
     if (isEnding) {
         // the call is over, so show the black screen
         video.classList.add("hidden");
